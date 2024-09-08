@@ -72,7 +72,7 @@ if upload_file is not None:
         df_metrics = pd.DataFrame.from_records(
             classification_report(y_test, y_pred, output_dict=True)
         ).transpose()
-        st.table(df)
+        st.table(df_metrics)
 
         #st.write(classification_report(y_test, y_pred))
 
