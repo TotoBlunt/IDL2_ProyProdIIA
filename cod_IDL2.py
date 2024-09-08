@@ -67,7 +67,14 @@ if upload_file is not None:
         st.write('##Metricas de Evaluacion del primer modelo: \n')
         y_pred = model.predict(X_test)
         st.write("###Accuracy:", accuracy_score(y_test, y_pred))
-        st.write(classification_report(y_test, y_pred))
+
+        # Convertir el classification report a un DataFrame
+        df = pd.DataFrame.from_records(
+            classification_report(y_test, y_pred, output_dict=True)
+        ).transpose()
+        st.table(df)
+
+        #st.write(classification_report(y_test, y_pred))
 
         # Importancia de las características
         importances = model.feature_importances_
