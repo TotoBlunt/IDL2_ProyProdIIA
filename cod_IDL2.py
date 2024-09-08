@@ -66,7 +66,7 @@ if upload_file is not None:
         # Evaluar el modelo
         st.write('### Metricas de Evaluacion del primer modelo: \n')
         y_pred = model.predict(X_test)
-        st.write("###Accuracy:", accuracy_score(y_test, y_pred))
+        st.write("#### Accuracy:", accuracy_score(y_test, y_pred))
 
         # Convertir el classification report a un DataFrame
         df_metrics = pd.DataFrame.from_records(
@@ -94,14 +94,14 @@ if upload_file is not None:
         st.write("### Para mejorar el logro del objetivo 'SI' en PesoFinal, concéntrate en mejorar las siguientes 5 variables principales:")
         cont = 0
         for feature, importance in feature_importances.itertuples(index=False):
-            print(f"- {feature} (Importancia: {importance:.3f})")
+            st.write(f"- {feature} (Importancia: {importance:.3f})")
             cont +=1
             if cont == 5:
                 break
         #Variables mas importantes a trabajar en el modelo
         top5 = feature_importances['Característica'].head(5)
         top5 = top5.tolist()
-        st.write(f'### Variables a utilizar en el modelo: ',top5)
+        st.write(f'#### Variables a utilizar en el modelo: ',top5)
         
         #DIVIR EL DATA FRAME EN CARACTERISTICAS Y ETIQUETAS PARA ENTRENAR EL MODELO
         x_model = df[top5] #Cuando es mas de una columna se utiliza dos corchetes para que lo lea correctamente
@@ -133,12 +133,12 @@ if upload_file is not None:
         st.write('### Metricas de Evaluacion del "2do Modelo:\n')
         mse = mean_squared_error(y_test_model, y_pred_model)
         r2 = r2_score(y_test_model, y_pred_model)
-        st.write(f'### Coeficiente de determinacion: {r2:.4f}')
-        st.write(f'### Error cuadratico medio: {mse:.4f}')
+        st.write(f'#### Coeficiente de determinacion: {r2:.4f}')
+        st.write(f'#### Error cuadratico medio: {mse:.4f}')
         from sklearn.model_selection import cross_val_score
 
         r2_scores = cross_val_score(modelo, x_train_model, y_train_model, cv=5, scoring='r2')
-        st.write(f'### R² promedio en validación cruzada: {r2_scores.mean():.4f}')
+        st.write(f'#### R² promedio en validación cruzada: {r2_scores.mean():.4f}')
         
         # Grafico de Comparacion
         fig,ax = plt.subplots()
@@ -154,7 +154,7 @@ if upload_file is not None:
 
         # Varianza
         varianza = ((df['PesoFinal'] - df['Peso Prom Final Predicho']) **2).mean()
-        st.write(f"### La varianza de los valores es:  {varianza:.4f}")
+        st.write(f"#### La varianza de los valores es:  {varianza:.4f}")
 
         
     except FileNotFoundError as e:
