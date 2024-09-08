@@ -72,7 +72,7 @@ if upload_file is not None:
         # Importancia de las características
         importances = model.feature_importances_
         feature_importances = pd.DataFrame({'Característica': selected_features, 'Importancia': importances})
-        #feature_importances = feature_importances.sort_values('Importancia', ascending=False)
+        feature_importances = feature_importances.sort_values('Importancia', ascending=False)
         
         #Grafico de importancia
         # Crear el diagrama de barras
@@ -80,7 +80,7 @@ if upload_file is not None:
         ax.barh(feature_importances['Característica'], feature_importances['Importancia'])
         ax.set_xlabel('Importancia')
         ax.set_ylabel('Característica')
-        ax.title('Importancia de las 20 Características Principales')
+        ax.set_title('Importancia de las 20 Características Principales')
         st.pyplot(fig)
 
         # Sugerencias para mejorar el objetivo "SI"
