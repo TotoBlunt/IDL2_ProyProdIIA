@@ -136,7 +136,7 @@ if upload_file is not None:
         # Grafico de Comparacion
         fig,ax = plt.subplots()
 
-        ax.plot(df['Peso Prom Final'], label='Peso Prom. Final (Real)', color='blue')
+        ax.plot(df['PesoFinal'], label='Peso Prom. Final (Real)', color='blue')
         ax.plot(df['Peso Prom Final Predicho'], label='Peso Prom. Final Predicho', color='red')
         ax.set_xlabel('Índice')
         ax.set_ylabel('Peso Prom. Final')
