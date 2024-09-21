@@ -15,7 +15,7 @@ import pandas as pd
 import streamlit as st
 
 #Titulo para el app
-st.title("Proyecto Productivo para la prediccion del peso de pollos usando variables descritas por el modelo Randomw Forest luego hacer las predicciones usando el Modelo Ensemble, con Streamlit")
+st.title("Proyecto Productivo para la prediccion del peso de pollos usando variables descritas por el modelo SelectcKbest luego hacer las predicciones usando el Modelo Ensemble, con Streamlit")
 
 #Subir archivo de excel
 upload_file = st.file_uploader('Sube un archivo Excel',type=['xlsx'])
