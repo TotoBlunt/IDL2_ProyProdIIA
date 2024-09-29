@@ -1,4 +1,4 @@
-from sklearn.ensemble import VotingRegressor,RandomForestRegressor
+from sklearn.ensemble import VotingRegressor,RandomForestRegressor,GradientBoostingRegressor
 from sklearn.tree import DecisionTreeRegressor
 from sklearn.linear_model import LinearRegression
 from sklearn.neighbors import KNeighborsRegressor
@@ -106,7 +106,8 @@ if upload_file is not None:
         models = [ ("decision_tree", DecisionTreeRegressor(max_depth=5)),
          ("linear_regression",LinearRegression()), 
          ("k_neighbors",KNeighborsRegressor(n_neighbors=5)),
-         ("random_forest",RandomForestRegressor(n_estimators=100))] #de los 5 vecinos sacara deciciones estadisticas
+         ("random_forest",RandomForestRegressor(n_estimators=100)),
+         ('gradient_booster',GradientBoostingRegressor(n_estimators=100))] #de los 5 vecinos sacara deciciones estadisticas
 
         # Crear un modelo de ensamble con los modelos anteriores el metodo combina las predicciones de varios modelos 
         modelo = VotingRegressor(models)
