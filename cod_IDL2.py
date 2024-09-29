@@ -3,7 +3,7 @@ from sklearn.tree import DecisionTreeRegressor
 from sklearn.linear_model import LinearRegression
 from sklearn.neighbors import KNeighborsRegressor
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import mean_squared_error, r2_score
+from sklearn.metrics import mean_squared_error, r2_score,mean_absolute_error
 from sklearn.feature_selection import SelectKBest, f_classif
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
@@ -127,8 +127,10 @@ if upload_file is not None:
         st.write('### Metricas de Evaluacion del "2do Modelo:\n')
         mse = mean_squared_error(y_test_model, y_pred_model)
         r2 = r2_score(y_test_model, y_pred_model)
+        mae = mean_absolute_error(y_test_model,y_pred_model)
         st.write(f'#### Coeficiente de determinacion: {r2:.4f}')
         st.write(f'#### Error cuadratico medio: {mse:.4f}')
+        st.write(f'#### Error absoluto medio: {mae:.4f}')
         from sklearn.model_selection import cross_val_score
 
         r2_scores = cross_val_score(modelo, x_train_model, y_train_model, cv=5, scoring='r2')
