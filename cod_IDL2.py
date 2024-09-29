@@ -89,7 +89,7 @@ if upload_file is not None:
             if cont == 5:
                 break
         #Variables mas importantes a trabajar en el modelo
-        top5 = feature_importances['Característica'].head(10)
+        top5 = feature_importances['Característica'].head(5)
         top5 = top5.tolist()
         st.write(f'#### Variables a utilizar en el modelo: ',top5)
         
