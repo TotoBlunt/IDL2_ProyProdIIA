@@ -158,7 +158,12 @@ if upload_file is not None:
             pickle.dump(modelo, file)
 
         st.write("Modelo guardado como 'voting_regressor_model.pkl'")
-                
+        # Botón para cargar la aplicación de predicción
+        if st.button("Ir a Predicción"):
+            # Redirigir a la aplicación de predicción
+            st.session_state.go_to_prediction = True
+            st.experimental_rerun()  # Recargar la aplicación para aplicar el cambio
+                        
     except FileNotFoundError as e:
         st.error(f"Error en el proceso: {e}")
     except SyntaxError as e:
